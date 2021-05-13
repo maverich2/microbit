@@ -23,6 +23,7 @@ input.onButtonPressed(Button.A, function () {
 })
 radio.onReceivedString(function (receivedString) {
     utente = receivedString.substr(0, 1)
+    utente_temp = utente
     tentativo = parseFloat(receivedString.substr(1, 1))
     if (tentativo == casuale) {
         radio.sendString("" + utente + "k")
@@ -33,6 +34,12 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 let tentativo = 0
+let utente_temp = ""
 let utente = ""
 let casuale = 0
 radio.setGroup(101)
+basic.forever(function () {
+    basic.showString(utente_temp)
+    basic.pause(100)
+    utente_temp = ""
+})
